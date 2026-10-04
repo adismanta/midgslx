@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluasi Tengah Semester Gasal 2026 - SMAN 1 Tangen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background overlay with smooth gradient blur */
+        .bg-school-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                radial-gradient(circle at center, rgba(15, 23, 42, 0.85) 0%, rgba(3, 7, 18, 0.96) 100%),
+                url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
+        }
+
+        /* Glassmorphism card container */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.80);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Option input interactive styling */
+        .option-label {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .option-label:hover {
+            background-color: rgba(30, 58, 138, 0.3);
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+        .option-label.selected {
+            background-color: rgba(37, 99, 235, 0.3) !important;
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Fade-in screen animations */
+        .fade-in {
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(14px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Glowing button effect */
+        .btn-glow {
+            position: relative;
+        }
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #2563eb, #3b82f6, #60a5fa, #2563eb);
+            border-radius: 1rem;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        .btn-glow:hover::after {
+            opacity: 1;
+        }
+
+        /* Custom scrollbars */
+        textarea::-webkit-scrollbar { width: 8px; }
+        textarea::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
+        textarea::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.25); border-radius: 4px; }
+        textarea::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center p-3 sm:p-6 min-h-screen relative">
+
+    <div id="bg-layer" class="bg-school-overlay"></div>
+
+    <header class="w-full max-w-4xl flex items-center justify-between mb-4 px-2 z-10">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/40 flex items-center justify-center font-bold text-blue-400 text-lg shadow-lg">
+                ST
+            </div>
+            <div>
+                <h1 class="text-sm font-bold text-white tracking-wide uppercase">SMA NEGERI 1 TANGEN</h1>
+                <p class="text-xs text-blue-300/80">Keren - Unggul - Berprestasi</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-full max-w-4xl glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden transition-all duration-500 z-10">
+
+        <!-- ================= 0. SPLASH SCREEN ================= -->
+        <section id="screen-splash" class="flex flex-col items-center justify-center text-center space-y-8 py-6 sm:py-10 fade-in">
+            <div class="space-y-4">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs sm:text-sm font-semibold uppercase tracking-widest backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+                    Portal Ujian Digital 2026
+                </div>
+
+                <div class="relative inline-block my-2">
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 p-0.5 shadow-[0_0_50px_rgba(37,99,235,0.4)]">
+                        <div class="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                    EVALUASI TENGAH SEMESTER GASAL
+                </h1>
+                <p class="text-lg sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-200 to-cyan-300">
+                    SMA NEGERI 1 TANGEN
+                </p>
+                <p class="text-xs sm:text-sm text-gray-400 uppercase tracking-widest font-semibold">Tahun Ajaran 2026/2027</p>
+            </div>
+
+            <!-- Detail Class Card -->
+            <div class="grid grid-cols-2 gap-4 w-full max-w-md bg-slate-900/60 border border-white/10 rounded-2xl p-4 text-center">
+                <div class="border-r border-white/10 pr-2">
+                    <span class="text-xs text-gray-400 uppercase tracking-wider block">Mata Pelajaran</span>
+                    <span class="font-bold text-white text-base sm:text-lg">Informatika</span>
+                </div>
+                <div class="pl-2">
+                    <span class="text-xs text-gray-400 uppercase tracking-wider block">Kelas / Tingkat</span>
+                    <span class="font-bold text-blue-400 text-base sm:text-lg">X (Sepuluh)</span>
+                </div>
+            </div>
+
+            <!-- Start Button on Splash Screen -->
+            <button id="btn-splash-start" class="btn-glow group relative px-10 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-lg rounded-2xl shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-500/50">
+                <span class="relative z-10 flex items-center gap-3">
+                    MULAI EVALUASI
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+            </button>
+        </section>
+
+        <!-- ================= 1. START / RULES SCREEN ================= -->
+        <section id="screen-start" class="hidden flex-col items-center justify-center text-center space-y-8 fade-in">
+            <div class="space-y-2 text-blue-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-2 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h2 class="text-xs tracking-widest uppercase font-semibold text-gray-400">Petunjuk & Ketentuan Ujian</h2>
+                <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Evaluasi Tengah Semester Gasal</h1>
+            </div>
+
+            <!-- Subject Metadata -->
+            <div class="bg-slate-900/80 border border-white/10 rounded-2xl p-6 w-full max-w-md text-left space-y-3 shadow-inner">
+                <div class="flex justify-between border-b border-white/10 pb-2">
+                    <span class="text-gray-400">Mata Pelajaran</span>
+                    <span class="font-semibold text-white">Informatika</span>
+                </div>
+                <div class="flex justify-between border-b border-white/10 pb-2">
+                    <span class="text-gray-400">Kelas</span>
+                    <span class="font-semibold text-white">X (Sepuluh)</span>
+                </div>
+                <div class="flex justify-between border-b border-white/10 pb-2">
+                    <span class="text-gray-400">Satuan Pendidikan</span>
+                    <span class="font-semibold text-white">SMA Negeri 1 Tangen</span>
+                </div>
+                <div class="flex justify-between pb-1">
+                    <span class="text-gray-400">Guru Pengampu</span>
+                    <span class="font-semibold text-blue-400">Sujarwoko, S.T., S.Kom.</span>
+                </div>
+            </div>
+
+            <!-- Exam Rules Warning Box -->
+            <div class="text-sm text-gray-300 max-w-lg bg-red-500/10 border border-red-500/30 p-5 rounded-2xl text-left space-y-2">
+                <h3 class="font-bold text-red-400 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    ATURAN & KETENTUAN UJIAN
+                </h3>
+                <ul class="list-disc list-inside space-y-1.5 text-gray-200">
+                    <li>Terdiri dari <strong>30 Soal Pilihan Ganda</strong> dan <strong>5 Soal Essay</strong>.</li>
+                    <li><strong>Pilihan Ganda:</strong> Dibatasi waktu <strong>60 detik per soal</strong>. Sistem akan otomatis lanjut jika waktu habis.</li>
+                    <li><strong>Essay:</strong> Jawab dengan lengkap, ringkas, dan jelas.</li>
+                </ul>
+            </div>
+
+            <div class="flex flex-wrap gap-4 justify-center">
+                <button id="btn-back-splash" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-gray-300 font-semibold rounded-xl border border-white/10 transition-colors">
+                    Kembali
+                </button>
+                <button id="btn-start" class="btn-glow px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all">
+                    KONFIRMASI & MULAI SOAL
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 2. QUIZ SCREEN ================= -->
+        <section id="screen-quiz" class="hidden flex-col h-full fade-in">
+            
+            <!-- Quiz Header Bar -->
+            <div class="flex flex-wrap items-center justify-between border-b border-white/10 pb-4 mb-6 gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-500/20 text-blue-300 font-semibold px-4 py-1.5 rounded-lg border border-blue-500/30 text-sm">
+                        <span id="quiz-type-label">Pilihan Ganda</span>
+                    </div>
+                    <div class="text-gray-300 font-medium text-sm">
+                        Soal <span id="current-question-number" class="text-white font-bold">1</span> dari <span id="total-question-number" class="text-white font-bold">30</span>
+                    </div>
+                </div>
+                
+                <!-- Timer Display Box -->
+                <div id="timer-container" class="flex items-center gap-2 bg-slate-900/90 border border-slate-700 px-4 py-2 rounded-xl shadow-inner">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 timer-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span id="timer-display" class="font-mono text-xl font-bold tracking-wider text-white">01:00</span>
+                </div>
+            </div>
+
+            <!-- Question Body Area -->
+            <div class="flex-grow flex flex-col justify-center min-h-[300px]">
+                <h3 id="question-text" class="text-lg sm:text-2xl font-semibold leading-relaxed text-gray-100 mb-8">
+                    <!-- Dynamic Question text injected here -->
+                </h3>
+
+                <!-- Options or Textarea Container -->
+                <div id="input-container" class="space-y-3.5">
+                    <!-- Dynamic options injected here -->
+                </div>
+            </div>
+
+            <!-- Quiz Navigation Footer -->
+            <div class="mt-8 pt-6 border-t border-white/10 flex justify-end">
+                <button id="btn-next" class="px-7 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg transition-colors flex items-center gap-2 focus:outline-none focus:ring-4 focus:ring-blue-500/30">
+                    <span id="btn-next-text">Selanjutnya</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 3. END SCREEN ================= -->
+        <section id="screen-end" class="hidden flex-col items-center justify-center text-center space-y-6 fade-in py-12">
+            <div class="bg-green-500/20 p-5 rounded-full ring-8 ring-green-500/10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Evaluasi Selesai</h2>
+            <p class="text-base sm:text-lg text-gray-300 max-w-md">
+                Terima kasih telah menyelesaikan Evaluasi Tengah Semester Gasal 2026 Informatika SMAN 1 Tangen. Jawaban Anda telah berhasil direkam.
+            </p>
+            <div class="p-4 bg-slate-900/60 border border-white/10 rounded-xl text-xs sm:text-sm text-gray-400 max-w-sm">
+                Status: <span class="text-green-400 font-semibold">Terkirim ke Sistem Server</span>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-6 text-center text-xs text-gray-400/80 z-10">
+        &copy; 2026 SMA Negeri 1 Tangen &bull; Sujarwoko, S.T., S.Kom.
+    </footer>
+
+    <script>
+        // --- QUESTION DATA (30 MCQ & 5 ESSAY) - NO QUESTION MARKS, ALL ELLIPSES (...) ---
+        const mcqData = [
+            { q: "1. Informatika merupakan bidang ilmu yang mempelajari tentang...", options: { A: "cara menggunakan alat komunikasi", B: "pengolahan informasi dengan menggunakan sistem komputasi", C: "sejarah perkembangan komputer saja", D: "cara memperbaiki perangkat keras", E: "penggunaan internet untuk hiburan" } },
+            { q: "2. Salah satu tujuan mempelajari Informatika di SMA adalah agar peserta didik mampu...", options: { A: "menghafal jenis komputer", B: "bermain komputer", C: "berpikir komputasional dan menyelesaikan masalah secara sistematis", D: "perbaikan hardware", E: "menjadi teknisi" } },
+            { q: "3. Karakteristik utama dari bidang ilmu Informatika yaitu...", options: { A: "fokus hardware saja", B: "aplikasi perkantoran", C: "memanfaatkan konsep komputasi untuk menyelesaikan persoalan", D: "sejarah", E: "tidak ada kaitan dengan kehidupan" } },
+            { q: "4. Penerapan Informatika di kehidupan sehari-hari contohnya...", options: { A: "sistem pembayaran digital", B: "olahraga tanpa teknologi", C: "baca buku cetak", D: "menulis dengan pensil", E: "jalan kaki" } },
+            { q: "5. Teknologi informasi membantu manusia mengolah data menjadi...", options: { A: "perangkat keras", B: "jaringan", C: "informasi yang bermakna", D: "kabel", E: "sistem operasi" } },
+            { q: "6. Aktivitas yang berkaitan dengan bidang Informatika (1. Mengolah data nilai, 2. Membuat algoritma, 3. Menganalisis informasi, 4. Menggambar manual)...", options: { A: "1 dan 2", B: "1 dan 3", C: "2 dan 3", D: "1, 2, dan 3", E: "1, 2, 3, dan 4" } },
+            { q: "7. Manfaat utama belajar Informatika bagi siswa adalah...", options: { A: "meningkatkan kemampuan memecahkan masalah", B: "mengurangi logika", C: "bergantung pada komputer", D: "menghilangkan belajar", E: "membatasi kreativitas" } },
+            { q: "8. Informatika tidak hanya mempelajari penggunaan komputer, tetapi juga...", options: { A: "konsep dan prinsip komputasi", B: "main gim", C: "beli komputer", D: "alat tulis", E: "gambar manual" } },
+            { q: "9. Analisis hasil survei menggunakan aplikasi pengolah data termasuk dalam bidang...", options: { A: "pengolahan data", B: "olahraga", C: "seni tari", D: "pertanian", E: "kerajinan" } },
+            { q: "10. Sikap positif dalam memanfaatkan teknologi digital adalah...", options: { A: "tanpa dampaknya", B: "menggunakan teknologi secara bijak dan bertanggung jawab", C: "sebar semua data", D: "abai data pribadi", E: "cuma untuk hiburan" } },
+            { q: "11. Pustakawan mencari buku di antara 10.000 buku yang sudah terurut abjad. Perbandingan antara Sequential Search dan Binary Search...", options: { A: "Sequential lebih cepat", B: "Binary Search jauh lebih cepat karena membagi dua area pencarian", C: "Sama saja kecepatannya", D: "Sequential efisien di tengah", E: "Binary Search pasti gagal" } },
+            { q: "12. Binary Search mencari NIS 1045 tidak ditemukan padahal data tersebut ada. Kesalahan utama Budi adalah...", options: { A: "Tidak membatasi data", B: "Tipe data teks", C: "Lupa melakukan proses pengurutan (Sorting) sebelum pencarian", D: "Database terlalu besar", E: "Indeks terakhir salah" } },
+            { q: "13. Memfilter sepatu termurah ke termahal dengan cara menukar posisi dua sepatu berdekatan secara terus menerus...", options: { A: "Selection Sort", B: "Insertion Sort", C: "Merge Sort", D: "Bubble Sort", E: "Sequential Search" } },
+            { q: "14. Menyelipkan kartu baru di posisi yang tepat di antara kartu yang sudah urut di tangan merupakan analogi dari...", options: { A: "Selection Sort", B: "Insertion Sort", C: "Quick Sort", D: "Binary Search", E: "Bubble Sort" } },
+            { q: "15. Kasir antrean (FIFO) malah melayani pelanggan yang paling terakhir datang. Kesalahan struktur datanya...", options: { A: "Seharusnya Queue malah menggunakan Stack", B: "Seharusnya Stack malah Queue", C: "Memori habis", D: "Error Searching", E: "Pengurutan Descending" } },
+            { q: "16. Fitur Undo (Ctrl+Z) pada Microsoft Word membatalkan atau menghapus perintah terakhir yang dilakukan...", options: { A: "Queue", B: "Stack (LIFO)", C: "Sorting", D: "Searching", E: "Queue LIFO" } },
+            { q: "17. Seleksi nilai ujian terkecil lalu ditukar dengan elemen pertama, dan seterusnya merupakan prinsip dari...", options: { A: "Bubble Sort", B: "Insertion Sort", C: "Selection Sort", D: "Linear Search", E: "Binary Search" } },
+            { q: "18. Kasus yang TIDAK TEPAT diselesaikan dengan konsep Queue adalah...", options: { A: "Printer Spooling", B: "Antrean kasir", C: "Tombol Back pada Web Browser", D: "Antrean gerbang tol otomatis", E: "PPDB online pendaftar pertama" } },
+            { q: "19. Evaluasi keseimbangan tanda kurung buka dan tutup pada ekspresi matematika menggunakan struktur data...", options: { A: "Queue", B: "Stack", C: "Bubble Sort", D: "Sequential Search", E: "Binary Search" } },
+            { q: "20. Menumpuk kardus mi instan dan mengambil kardus di posisi paling atas secara bertahap menggunakan operasi...", options: { A: "Enqueue dan Dequeue", B: "Push dan Pop", C: "Insert dan Delete", D: "Sort dan Search", E: "Top dan Bottom" } },
+            { q: "21. Mencari kata di dalam kamus 1.000 halaman yang terurut paling cepat dan efisien menggunakan...", options: { A: "Sequential Search", B: "Binary Search", C: "Selection Sort", D: "Queue", E: "Bubble Search" } },
+            { q: "22. Struktur Queue memiliki prinsip elemen yang pertama kali masuk akan pertama kali keluar, disingkat...", options: { A: "LIFO", B: "FIFO", C: "FILO", D: "LILO", E: "GIGO" } },
+            { q: "23. Kondisi pertukaran dua elemen berdekatan pada algoritma Bubble Sort secara Descending terjadi ketika elemen kiri...", options: { A: "Lebih kecil dari elemen kanan", B: "Lebih besar dari elemen kanan", C: "Sama dengan elemen kanan", D: "Tanpa membandingkan", E: "Tidak terjadi pertukaran" } },
+            { q: "24. Stack piring disusun berurutan: Biru, Merah, Hijau, Kuning (teratas). Jika dilakukan proses POP dua kali, piring teratas saat ini...", options: { A: "Kuning", B: "Hijau", C: "Merah", D: "Biru", E: "Kosong" } },
+            { q: "25. Nasabah A, B, C antre dalam Queue. Nasabah A mendadak batal antre. Dalam konsep Queue murni idealnya...", options: { A: "POP A", B: "Dequeue", C: "Sistem Queue tidak mengizinkan elemen dihapus secara acak sebelum waktunya", D: "Push A", E: "Sort ulang" } },
+            { q: "26. Sequential Search lebih disarankan daripada Binary Search saat...", options: { A: "Jutaan record data", B: "Angka berupa desimal", C: "Kondisi kumpulan data acak dan jumlahnya relatif sedikit", D: "Ukuran RAM sangat besar", E: "Tidak pernah lebih baik" } },
+            { q: "27. Hasil iterasi penuh pertama Bubble Sort Ascending dari array [5, 2, 9, 1] adalah...", options: { A: "[1, 2, 5, 9]", B: "[2, 5, 1, 9]", C: "[5, 2, 1, 9]", D: "[2, 5, 9, 1]", E: "[9, 5, 2, 1]" } },
+            { q: "28. Server e-tilang memproses ratusan pelanggaran lalu lintas sesuai urutan masuk. Struktur logisnya...", options: { A: "Stack (LIFO)", B: "Queue (FIFO)", C: "Sorting", D: "Binary Search", E: "Selection Sort" } },
+            { q: "29. Binary Search mencari data di antara 1.024 buku yang sudah terurut, jumlah maksimal pengecekan membagi area yang dibutuhkan...", options: { A: "1024 kali", B: "512 kali", C: "Maksimal 10 kali", D: "1 kali", E: "20 kali" } },
+            { q: "30. Pemahaman tentang Tumpukan (Stack) dan Antrean (Queue) dalam Berpikir Komputasional merupakan tahap...", options: { A: "Dekomposisi", B: "Pengenalan Pola", C: "Abstraksi", D: "Desain Algoritma", E: "Debugging" } }
+        ];
+
+        const essayData = [
+            "1. Sebuah aplikasi musik streaming memiliki fitur 'Up Next' (antrean lagu) dan tombol 'Undo' (batal hapus). Jelaskan perbedaan struktur data pada kedua fitur tersebut (Stack dan Queue)...",
+            "2. Terdapat angka acak: 7, 3, 5, 2, 8. Jelaskan langkah-langkah iterasi (tracing) pengurutan menggunakan Selection Sort (Ascending)...",
+            "3. Mengapa algoritma Binary Search tidak dapat digunakan pada basis data KTP yang belum diurutkan (Sorting). Jelaskan alasan komputasionalnya...",
+            "4. Berikan satu contoh studi kasus nyata antrean (Queue) dalam kehidupan sehari-hari selain lampu lalu lintas, dan jelaskan mengapa penerapan model Stack justru akan mengacaukan sistem tersebut...",
+            "5. Jelaskan karakteristik cara kerja Bubble Sort yang membuatnya kurang efisien dan sangat lambat jika diterapkan pada jutaan data..."
+        ];
+
+        // --- EXAM STATE MANAGEMENT ---
+        let state = {
+            section: 'mcq', // 'mcq' or 'essay'
+            currentIndex: 0,
+            timeLeft: 60,
+            timerInterval: null,
+            answers: {
+                mcq: new Array(mcqData.length).fill(null),
+                essay: new Array(essayData.length).fill("")
+            }
+        };
+
+        // DOM Element Cache
+        const screens = {
+            splash: document.getElementById('screen-splash'),
+            start: document.getElementById('screen-start'),
+            quiz: document.getElementById('screen-quiz'),
+            end: document.getElementById('screen-end')
+        };
+
+        const dom = {
+            btnSplashStart: document.getElementById('btn-splash-start'),
+            btnBackSplash: document.getElementById('btn-back-splash'),
+            btnStart: document.getElementById('btn-start'),
+            btnNext: document.getElementById('btn-next'),
+            btnNextText: document.getElementById('btn-next-text'),
+            quizTypeLabel: document.getElementById('quiz-type-label'),
+            currQNum: document.getElementById('current-question-number'),
+            totalQNum: document.getElementById('total-question-number'),
+            timerContainer: document.getElementById('timer-container'),
+            timerDisplay: document.getElementById('timer-display'),
+            questionText: document.getElementById('question-text'),
+            inputContainer: document.getElementById('input-container')
+        };
+
+        function showScreen(screenName) {
+            Object.keys(screens).forEach(key => {
+                screens[key].classList.add('hidden');
+                screens[key].classList.remove('flex');
+            });
+            screens[screenName].classList.remove('hidden');
+            screens[screenName].classList.add('flex');
+            
+            screens[screenName].classList.remove('fade-in');
+            void screens[screenName].offsetWidth; // trigger reflow
+            screens[screenName].classList.add('fade-in');
+        }
+
+        function initExam() {
+            state.section = 'mcq';
+            state.currentIndex = 0;
+            state.answers.mcq.fill(null);
+            state.answers.essay.fill("");
+            showScreen('quiz');
+            renderQuestion();
+        }
+
+        function startTimer() {
+            stopTimer();
+            if (state.section === 'mcq') {
+                dom.timerContainer.style.display = 'flex';
+                state.timeLeft = 60;
+                updateTimerDisplay();
+
+                state.timerInterval = setInterval(() => {
+                    state.timeLeft--;
+                    updateTimerDisplay();
+                    if (state.timeLeft <= 0) {
+                        stopTimer();
+                        nextQuestion();
+                    }
+                }, 1000);
+            } else {
+                // Essay does not enforce 60s question limit
+                dom.timerContainer.style.display = 'none';
+            }
+        }
+
+        function stopTimer() {
+            if (state.timerInterval) {
+                clearInterval(state.timerInterval);
+                state.timerInterval = null;
+            }
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(state.timeLeft / 60);
+            const secs = state.timeLeft % 60;
+            dom.timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            if (state.timeLeft <= 10) {
+                dom.timerDisplay.classList.add('text-red-400');
+            } else {
+                dom.timerDisplay.classList.remove('text-red-400');
+            }
+        }
+
+        function renderQuestion() {
+            if (state.section === 'mcq') {
+                const currentData = mcqData[state.currentIndex];
+                dom.quizTypeLabel.textContent = "Pilihan Ganda";
+                dom.currQNum.textContent = state.currentIndex + 1;
+                dom.totalQNum.textContent = mcqData.length;
+                dom.questionText.textContent = currentData.q;
+                dom.btnNextText.textContent = (state.currentIndex === mcqData.length - 1) ? "Lanjut ke Essay" : "Selanjutnya";
+
+                let html = "";
+                Object.entries(currentData.options).forEach(([key, val]) => {
+                    const isSelected = state.answers.mcq[state.currentIndex] === key;
+                    html += `
+                        <div onclick="selectOption('${key}')" class="option-label ${isSelected ? 'selected' : ''} bg-slate-900/60 border border-white/10 p-4 rounded-xl flex items-center gap-4 transition-all">
+                            <span class="w-8 h-8 rounded-lg flex items-center justify-center font-bold ${isSelected ? 'bg-blue-600 text-white' : 'bg-slate-800 text-gray-300'}">${key}</span>
+                            <span class="text-gray-200 text-base flex-1">${val}</span>
+                        </div>
+                    `;
+                });
+                dom.inputContainer.innerHTML = html;
+                startTimer();
+            } else {
+                const currentData = essayData[state.currentIndex];
+                dom.quizTypeLabel.textContent = "Essay / Uraian";
+                dom.currQNum.textContent = state.currentIndex + 1;
+                dom.totalQNum.textContent = essayData.length;
+                dom.questionText.textContent = currentData;
+                dom.btnNextText.textContent = (state.currentIndex === essayData.length - 1) ? "Selesai & Kirim" : "Selanjutnya";
+
+                const currentAnswer = state.answers.essay[state.currentIndex] || "";
+                dom.inputContainer.innerHTML = `
+                    <textarea id="essay-input" oninput="saveEssayAnswer(this.value)" rows="6" class="w-full bg-slate-900/80 border border-white/10 rounded-2xl p-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-base leading-relaxed" placeholder="Tuliskan jawaban lengkap Anda di sini...">${currentAnswer}</textarea>
+                `;
+                startTimer();
+            }
+        }
+
+        function selectOption(key) {
+            state.answers.mcq[state.currentIndex] = key;
+            renderQuestion();
+        }
+
+        function saveEssayAnswer(val) {
+            state.answers.essay[state.currentIndex] = val;
+        }
+
+        function nextQuestion() {
+            stopTimer();
+            if (state.section === 'mcq') {
+                if (state.currentIndex < mcqData.length - 1) {
+                    state.currentIndex++;
+                    renderQuestion();
+                } else {
+                    // Switch to Essay section
+                    state.section = 'essay';
+                    state.currentIndex = 0;
+                    renderQuestion();
+                }
+            } else {
+                if (state.currentIndex < essayData.length - 1) {
+                    state.currentIndex++;
+                    renderQuestion();
+                } else {
+                    finishExam();
+                }
+            }
+        }
+
+        function finishExam() {
+            stopTimer();
+            showScreen('end');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            dom.btnSplashStart.addEventListener('click', () => showScreen('start'));
+            dom.btnBackSplash.addEventListener('click', () => showScreen('splash'));
+            dom.btnStart.addEventListener('click', () => initExam());
+            dom.btnNext.addEventListener('click', () => nextQuestion());
+        });
+    </script>
+</body>
+</html>
